@@ -37,7 +37,7 @@ This project is a web application that fetches data from the [Gutenberg Books AP
 To get started with the project, clone the repository and open `index.html` in your browser.
 
 ```sh
-git clone <repository-url>
+git clone https://github.com/abir-islam-z/zepto-apps.git
 cd <repository-directory>
 npm i
 npm run dev
