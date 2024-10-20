@@ -19,9 +19,9 @@ const SEARCH_OPTIONS = [
 
 export default function HomePage() {
   const [searchBy, setSearchBy] = useState<string>("");
-  const [pageNumber, setPageNumber] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [searchParam, setSearchParam] = useSearchParams();
+  const [pageNumber, setPageNumber] = useSearchParams();
   const [wishList, setWishList] = useState<Book[]>([]);
 
   const search = (term: string) => {
@@ -46,12 +46,15 @@ export default function HomePage() {
   useEffect(() => {
     const prevSearchBy = localStorage.getItem("searchBy") || "";
     const prevSearchTerm = localStorage.getItem("searchTerm") || "";
-    if (prevSearchBy && prevSearchTerm) {
+    if (
+      prevSearchBy &&
+      prevSearchTerm &&
+      searchBy === "" &&
+      searchTerm === ""
+    ) {
       setSearchBy(prevSearchBy);
       setSearchTerm(prevSearchTerm);
       setSearchParam({ [prevSearchBy]: prevSearchTerm });
-    } else {
-      setSearchParam({});
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -73,7 +76,7 @@ export default function HomePage() {
     content = (
       <div className="p-8 sm:p-10 max-w-7xl mx-auto">
         <div className="text-md text-black">
-          <div className="gap-5 flex flex-wrap">{loading}</div>
+          <div className="gap-5 flex flex-wrap justify-center">{loading}</div>
         </div>
       </div>
     );
@@ -142,7 +145,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <div className="bg-brand relative px-6 sm:px-24 py-24">
+      <div className="bg-brand relative px-6 sm:px-24 pb-24 pt-40">
         <div className="sm:space-x-3">
           <div>
             <p className="text-white text-lg capitalize mb-3">
@@ -166,6 +169,8 @@ export default function HomePage() {
                   className="w-32 h-10 border-none focus:outline-none py-1 bg-transparent appearance-none text-black absolute inset-x-0 z-20 px-3 font-extralight capitalize"
                   onChange={(e) => {
                     setSearchBy(e.target.value);
+                    localStorage.removeItem("searchBy");
+                    localStorage.removeItem("searchTerm");
                     setSearchTerm("");
                     setSearchParam({});
                   }}

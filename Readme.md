@@ -38,7 +38,7 @@ To get started with the project, clone the repository and open `index.html` in y
 
 ```sh
 git clone https://github.com/abir-islam-z/zepto-apps.git
-cd <repository-directory>
+cd zepto-apps
 npm i
 npm run dev
 ```

@@ -6,7 +6,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function Button({ children, className, ...rest }: ButtonProps) {
   return (
-    <button className={cn("btn-primary", className)} {...rest}>
+    <button
+      className={cn(
+        "btn-primary disabled:!opacity-20 disabled:cursor-not-allowed disabled:pointer-events-none",
+        className
+      )}
+      {...rest}
+    >
       {children}
     </button>
   );

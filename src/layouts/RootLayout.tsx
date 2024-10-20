@@ -10,7 +10,7 @@ export default function RootLayout() {
   return (
     <div>
       <header>
-        <nav className="flex max-w-6xl mx-auto items-center h-20 shadow-md">
+        <nav className="flex mx-auto items-center h-20 shadow-md fixed inset-x-0 z-10 bg-white sm:px-20 px-8">
           {/* Logo */}
           <Link to="/" className="text-2xl font-bold">
             <h1 className="text-2xl font-bold text-center py-4 text-purple-400 font-mono">

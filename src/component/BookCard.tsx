@@ -100,6 +100,8 @@ export default function BookCard({
               </span>
             );
           })}
+
+          <p className="capitalize"> Book Id: ({book?.id})</p>
         </div>
       </div>
       <div className="mx-auto max-w-52 text-right">
